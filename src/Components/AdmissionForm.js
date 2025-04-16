@@ -45,14 +45,11 @@ const AdmissionForm = () => {
     };
 
     try {
-      const res = await fetch(
-        "mysql://root:sinoERPgFWkkMqQyNKiWECrYDZUVDVni@interchange.proxy.rlwy.net:55224/railway",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(dataToSend),
-        }
-      );
+      const res = await fetch('https://your-vercel-project.vercel.app/submit_complaint.php', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToSend)
+      });
 
       if (res.ok) {
         alert("Complaint submitted successfully!");
