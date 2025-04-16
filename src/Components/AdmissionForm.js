@@ -46,7 +46,7 @@ const AdmissionForm = () => {
 
     try {
       const res = await fetch(
-        "http://localhost/Complaints-projects/api/submit_complaint.php",
+        "mysql://root:sinoERPgFWkkMqQyNKiWECrYDZUVDVni@mysql.railway.internal:3306/railway",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

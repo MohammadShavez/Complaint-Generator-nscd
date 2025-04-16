@@ -13,7 +13,7 @@ const ComplaintList = () => {
   // Fetch complaints from backend
   const fetchComplaints = async () => {
     try {
-      const res = await axios.get("http://localhost/Complaints-projects/api/fetchComplaints.php");
+      const res = await axios.get("mysql://root:sinoERPgFWkkMqQyNKiWECrYDZUVDVni@mysql.railway.internal:3306/railway");
       if (Array.isArray(res.data)) {
         setComplaints(res.data);
       } else {
