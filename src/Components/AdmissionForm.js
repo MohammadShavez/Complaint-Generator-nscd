@@ -46,7 +46,7 @@ const AdmissionForm = () => {
 
     try {
       const res = await fetch(
-        "mysql://root:sinoERPgFWkkMqQyNKiWECrYDZUVDVni@mysql.railway.internal:3306/railway",
+        "mysql://root:sinoERPgFWkkMqQyNKiWECrYDZUVDVni@interchange.proxy.rlwy.net:55224/railway",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
