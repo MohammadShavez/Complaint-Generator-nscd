@@ -1,9 +1,8 @@
 <?php
 $host = "mysql.railway.internal";
 $user = "root";
-$password = "sinoERPgFWkkMqQyNKiWECrYDZUVDVni"; // or your MySQL password
+$password = "sinoERPgFWkkMqQyNKiWECrYDZUVDVni"; // Replace with your actual password
 $dbname = "railway";
-
 
 $conn = new mysqli($host, $user, $password, $dbname);
 
