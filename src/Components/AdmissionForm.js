@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import galleryExhibits from "./galleryExhibits";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const AdmissionForm = () => {
   // const navigate = useNavigate();
@@ -45,10 +45,10 @@ const AdmissionForm = () => {
     };
 
     try {
-      const res = await fetch('https://your-vercel-project.vercel.app/submit_complaint.php', {
+      const res = await fetch("http://localhost:5000/complaints", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSend)
+        body: JSON.stringify(formData),
       });
 
       if (res.ok) {

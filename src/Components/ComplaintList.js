@@ -9,11 +9,12 @@ const ComplaintList = () => {
   const [complaints, setComplaints] = useState([]);
   const [galleryFilter, setGalleryFilter] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("");
+  
 
   // Fetch complaints from backend
   const fetchComplaints = async () => {
     try {
-      const res = await axios.get("https://your-vercel-app.vercel.app/api/fetchComplaints.php");
+      const res = await axios.get("http://localhost:5000/complaints ");
       if (Array.isArray(res.data)) {
         setComplaints(res.data);
       } else {
@@ -168,15 +169,14 @@ const ComplaintList = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this complaint?")) {
       try {
-        await axios.delete("http://localhost/Complaints-projects/api/deleteComplaint.php", {
-          data: { id: id },
-        });
-        fetchComplaints(); // Refresh list
+        await axios.delete(`http://localhost:5000/complaints/${id}`);
+        fetchComplaints(); // Refresh the list
       } catch (error) {
         console.error("Error deleting complaint:", error);
       }
     }
   };
+  
 
   // Date Method
   const formatDate = (dateString) => {

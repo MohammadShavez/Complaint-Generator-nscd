@@ -1,10 +1,12 @@
 <?php
-$host = "mysql.railway.internal";
+$host = "localhost";
+$port = 55224; // if needed
 $user = "root";
-$password = "sinoERPgFWkkMqQyNKiWECrYDZUVDVni"; // Replace with your actual password
-$dbname = "railway";
+$password = ""; // Replace with your actual password
+$dbname = "complaint_db_nscd";
 
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $dbname, $port);
+
 
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
