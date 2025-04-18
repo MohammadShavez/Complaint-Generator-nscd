@@ -36,13 +36,13 @@ const AdmissionForm = () => {
     );
     const exhibitCode = selectedExhibit?.code || "NaN";
 
-    // const dataToSend = {
-    //   galleryName: finalGallery,
-    //   exhibitName: finalExhibit,
-    //   exhibitCode,
-    //   exhibitProblem: formData.exhibitProblem,
-    //   concernSection: formData.concernSection,
-    // };
+    const dataToSend = {
+      galleryName: finalGallery,
+      exhibitName: finalExhibit,
+      exhibitCode,
+      exhibitProblem: formData.exhibitProblem,
+      concernSection: formData.concernSection,
+    };
 
     try {
       const res = await fetch("http://localhost:5000/complaints", {
