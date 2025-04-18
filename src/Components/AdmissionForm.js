@@ -25,24 +25,24 @@ const AdmissionForm = () => {
     e.preventDefault();
 
     // Final values
-    const finalGallery =
-      formData.galleryName === "Other" ? formData.otherGallery : formData.galleryName;
-    const finalExhibit =
-      formData.exhibitName === "Other" ? formData.otherExhibit : formData.exhibitName;
+    // const finalGallery =
+    //   formData.galleryName === "Other" ? formData.otherGallery : formData.galleryName;
+    // const finalExhibit =
+    //   formData.exhibitName === "Other" ? formData.otherExhibit : formData.exhibitName;
 
-    // Exhibit Code Logic
-    const selectedExhibit = galleryExhibits[formData.galleryName]?.find(
-      (exhibit) => exhibit.name === formData.exhibitName
-    );
-    const exhibitCode = selectedExhibit?.code || "NaN";
+    // // Exhibit Code Logic
+    // const selectedExhibit = galleryExhibits[formData.galleryName]?.find(
+    //   (exhibit) => exhibit.name === formData.exhibitName
+    // );
+    // const exhibitCode = selectedExhibit?.code || "NaN";
 
-    const dataToSend = {
-      galleryName: finalGallery,
-      exhibitName: finalExhibit,
-      exhibitCode,
-      exhibitProblem: formData.exhibitProblem,
-      concernSection: formData.concernSection,
-    };
+    // const dataToSend = {
+    //   galleryName: finalGallery,
+    //   exhibitName: finalExhibit,
+    //   exhibitCode,
+    //   exhibitProblem: formData.exhibitProblem,
+    //   concernSection: formData.concernSection,
+    // };
 
     try {
       const res = await fetch("http://localhost:5000/complaints", {
