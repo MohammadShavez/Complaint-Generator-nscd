@@ -45,7 +45,7 @@ const AdmissionForm = () => {
     // };
 
     try {
-      const res = await fetch("https://your-railway-backend-url.up.railway.app/complaints", {
+      const res = await fetch("https://complaint-generator-nscd.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
