@@ -1,3 +1,5 @@
+// 📁 server/index.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -9,10 +11,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch((err) => console.log('❌ Mongo error:', err));
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('✅ Connected to MongoDB Atlas'))
+.catch((err) => console.error('❌ MongoDB connection error:', err));
 
 // Schema
 const Complaint = mongoose.model('Complaint', new mongoose.Schema({
@@ -21,26 +26,38 @@ const Complaint = mongoose.model('Complaint', new mongoose.Schema({
   exhibitCode: String,
   exhibitProblem: String,
   concernSection: String,
-  createdAt: { type: Date, default: Date.now }
-}));
+}, { timestamps: true }));
 
-// POST route
+// POST complaint
 app.post('/complaints', async (req, res) => {
   try {
     const complaint = new Complaint(req.body);
     await complaint.save();
-    res.status(201).json({ message: 'Saved' });
+    res.status(201).json({ message: 'Complaint saved successfully' });
   } catch (err) {
-    res.status(500).json({ message: 'Error saving', error: err });
+    res.status(500).json({ error: 'Failed to save complaint' });
   }
 });
 
-// GET route
+// GET complaints
 app.get('/complaints', async (req, res) => {
-  const data = await Complaint.find();
-  res.json(data);
+  try {
+    const complaints = await Complaint.find();
+    res.status(200).json(complaints);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch complaints' });
+  }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// DELETE complaint
+app.delete('/complaints/:id', async (req, res) => {
+  try {
+    await Complaint.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Complaint deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete complaint' });
+  }
 });
+
+// Start server
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
