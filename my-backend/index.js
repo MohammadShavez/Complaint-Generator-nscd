@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+app.listen(process.env.PORT || 5000)
+
 const complaintsRoute = require("./routes/complaints");
 
 const app = express();
