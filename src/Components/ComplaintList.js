@@ -14,7 +14,7 @@ const ComplaintList = () => {
   // Fetch complaints from backend
   const fetchComplaints = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/complaints ");
+      const res = await axios.get("https://complaint-generator-nscd-1.onrender.com");
       if (Array.isArray(res.data)) {
         setComplaints(res.data);
       } else {

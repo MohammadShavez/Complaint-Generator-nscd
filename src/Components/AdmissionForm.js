@@ -45,7 +45,7 @@ const AdmissionForm = () => {
     // };
 
     try {
-      const res = await fetch("https://complaint-generator-nscd.onrender.com", {
+      const res = await fetch("https://complaint-generator-nscd-1.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
